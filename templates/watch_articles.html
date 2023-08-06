@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch_articles</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <center><h1 class="display-3">Мои статьи</h1></center>
+    </div>
+    {% if articles| length>0 %}
+    {% for el in articles %}
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{ el.id }}</h2><br>
+            <h6 class="card-subtitle mb-2 text-muted">{{ el.image }}</h6>
+            <a href="watch_articles/{{ el.id }}" class="btn btn-link">Детальнее</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    {% endfor %}
+    {% else %}
+    <p>На сайте отсутcтвуют статьи</p>
+    {% endif %}
+</div>
+</body>
+</html>
