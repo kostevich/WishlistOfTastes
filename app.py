@@ -43,8 +43,7 @@ def upload_file():
 
         file = request.files['file']
 
-        file.save(f"uploadimages/{secure_filename(file.filename)}")
-        print(file)
+        file.save(f"static/uploadimages/{secure_filename(file.filename)}")
         # Сохраняем объект класса Article с данными из переменных, записанных в нужные поля.
         article = Article(image=file.filename)
         print(article)

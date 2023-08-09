@@ -9,21 +9,26 @@
     <div class="jumbotron jumbotron-fluid">
         <center><h1 class="display-3">Мои статьи</h1></center>
     </div>
-    {% if articles| length>0 %}
     {% for el in articles %}
+    {{ el}}
+    ghbdrn
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">{{ el.id }}</h2><br>
-            <h6 class="card-subtitle mb-2 text-muted">{{ el.image }}</h6>
-            <a href="watch_articles/{{ el.id }}" class="btn btn-link">Детальнее</a>
+<!--            <img-->
+<!--              class="fit-picture"-->
+<!--              src="url_for('static', filename='f{{ el.image}}')"-->
+<!--              alt="Grapefruit slice atop a pile of other slices"-->
+<!--            />-->
+                <img
+                  class="fit-picture"
+                  src="/static/uploadimages/IMG_20230707_210417.jpg"
+                  alt="Grapefruit slice atop a pile of other slices"
+                />
         </div>
     </div>
     <br>
     <br>
     {% endfor %}
-    {% else %}
-    <p>На сайте отсутcтвуют статьи</p>
-    {% endif %}
 </div>
 </body>
 </html>
