@@ -52,10 +52,76 @@ def index():
     # Возвращаем на страницу текст.
     return render_template("mainpage.html")
 
+
 @app.route('/about')
 def about():
     # Возвращаем на страницу текст.
     return render_template("about.html")
+
+
+@app.route('/watch_articles/<int:id>')
+# Функция для детального просмотра статьи.
+def watch_detailarticles(id):
+    # Сохраняем объект, в котором находится данные выбранной статьи.
+    article = Article.query.get(id)
+    # Возвращаем подробную статью на страницу.
+    return render_template("watch_detailarticles.html", article=article)
+
+
+@app.route('/watch_articles/<int:id>/delete')
+# Функция для вывода всех статей.
+def delete_detailarticles(id):
+    # Ищем объект, который надо удалить или 404.
+    article = Article.query.get_or_404(id)
+    try:
+        # Удаление объекта класса Article и добавление в сессию.
+        db.session.delete(article)
+        # Удаление статьи в базе данных.
+        db.session.commit()
+        # Возвращение на страницу со всеми статьями.
+        return redirect('/watch_articles')
+    # Исключение.
+    except:
+        # Возвращаем ошибку: "Не удалось удалить статью".
+        return "Не удалось удалить статью."
+    # Возвращаем статьи на страницу.
+    return render_template("watch_articles.html", article=article)
+
+
+@app.route('/watch_articles/<int:id>/edit', methods=['GET', 'POST'])
+def post_update(id):
+    if request.method == 'POST':
+        article = Article.query.get(id)
+        # Сохраняем в переменную text значение из поля формы text.
+        article.tag = request.form['tag']
+        # Сохраняем в переменную title значение из поля формы title.
+        article.title = request.form['title']
+        # Сохраняем в переменную intro значение из поля формы intro.
+        article.value = request.form['value']
+        # Сохраняем в переменную text значение из поля формы text.
+        article.comment = request.form['comment']
+        article.check = request.form['check']
+        file = request.files['file']
+        if file.filename == '' or file.filename == article.image:
+            print('None or similar')
+        else:
+            article.image = file.filename
+            file.save(f"static/uploadimages/{secure_filename(file.filename)}")
+        # Попробуем добавить значения в базу данных.
+        try:
+            # Добавление объекта класса Article в сессию.
+            db.session.add(article)
+            # Сохранение в базе данных.
+            db.session.commit()
+            # Возвращение на страницу со всеми статьями.
+            return redirect('/watch_articles')
+        # Исключение.
+        except:
+            # Возвращаем ошибку: "Не удалось добавить статью".
+            return "Не удалось изменить статью."
+    else:
+        article = Article.query.get(id)
+        return render_template("edit_articles.html", article=article)
 
 
 @app.route('/create_articles', methods=['GET', 'POST'])
