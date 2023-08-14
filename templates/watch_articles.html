@@ -1,34 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>watch_articles</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Мои статьи
+{% endblock %}
+
+{% block body %}
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
-        <center><h1 class="display-3">Мои статьи</h1></center>
+        <center><h1 class="display-3">Что покушать?</h1></center>
     </div>
+    {% if articles| length>0 %}
     {% for el in articles %}
-    {{ el}}
-    ghbdrn
     <div class="card">
-        <div class="card-body">
-<!--            <img-->
-<!--              class="fit-picture"-->
-<!--              src="url_for('static', filename='f{{ el.image}}')"-->
-<!--              alt="Grapefruit slice atop a pile of other slices"-->
-<!--            />-->
-                <img
-                  class="fit-picture"
-                  src="/static/uploadimages/IMG_20230707_210417.jpg"
-                  alt="Grapefruit slice atop a pile of other slices"
-                />
+  <div class="card-body">
+    <h4 class="card-title">{{ el.title }}</h4>
+      <img src="/static/uploadimages/{{ el.image }}" height="150" alt="Card image cap">
+      <p class="card-text">
+    </p>
+      <a href="watch_articles/{{ el.id }}" class="btn btn-primary">Детальнее</a>
+  </div>
         </div>
-    </div>
-    <br>
-    <br>
     {% endfor %}
+    {% else %}
+    <p>На сайте отсутcтвуют статьи</p>
+    {% endif %}
 </div>
-</body>
-</html>
+{% endblock %}

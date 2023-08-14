@@ -1,13 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Добавление изображения</title>
-</head>
-<body>
-    <form method="POST" enctype="multipart/form-data">
-      <input name ="file" type="file" name="file">
-      <input type="submit">
+{% extends 'base.html' %}
+
+{% block title %}
+Создание статьи
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1>Добавление статьи</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input name="title" id="title" class="form-control" placeholder="Введите название блюда/продукта"><br>
+        <input name="tag" id="tag" class="form-control" placeholder="Введите тег"><br>
+        <textarea name="value" id="value" class="form-control" placeholder="Введите оценку блюда"></textarea><br>
+        <textarea name="comment" id="comment" class="form-control" placeholder="Введите комментарий к оценке"></textarea><br>
+            <fieldset>
+              <legend>Пробовали ли вы это ранее?</legend>
+              <div>
+                <input type="radio" id="Да" name="check" value="Да" />
+                <label for="Да">Да</label>
+              </div>
+              <div>
+                <input type="radio" id="Нет" name="check" value="Нет" />
+                <label for="Нет">Нет</label>
+              </div>
+            </fieldset>
+        <br>
+        <input name ="file" type= "file" id ="file">
+        <br>
+        <br>
+<div class="row justify-content-md-center">
+      <input type="submit" class="btn btn-danger" value="Добавить статью">
+</div>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
