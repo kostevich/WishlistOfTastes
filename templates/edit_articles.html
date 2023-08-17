@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+Обновление хотелок
+{% endblock %}
+{% block body %}
+<div class="container">
+<h1>Обновление хотелок</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input name="title" id="title" class="form-control" value="{{ article.title }}" placeholder="Введите название хотелки"><br>
+        <input name="tag" id="tag" class="form-control" value="{{ article.tag }}" placeholder="Введите тег"><br>
+        <textarea name="value" id="value" class="form-control" placeholder="Введите оценку хотелки">{{ article.value }}</textarea><br>
+        <textarea name="comment" id="comment" class="form-control" placeholder="Введите комментарий к оценке">{{ article.comment }}</textarea><br>
+        {% if article.check == "Да" %}
+        <fieldset>
+        <legend>Пробовали ли вы это ранее? </legend>
+                  <div>
+                <input type="radio" id="Да" name="check" value="Я пробовал(а)" checked />
+                <label for="Да">Да</label>
+              </div>
+              <div>
+                <input type="radio" id="Нет" name="check" value="Не пробовал(а)" />
+                <label for="Нет">Нет</label>
+              </div>
+        </fieldset>
+        {% else %}
+        <fieldset>
+        <legend>Пробовали ли вы это ранее? </legend>
+                  <div>
+                <input type="radio" id="Да/" name="check" value="Я пробовал(а)"  />
+                <label for="Да">Да</label>
+              </div>
+              <div>
+                <input type="radio" id="Нет/" name="check" value="Не пробовал(а)" checked />
+                <label for="Нет">Нет</label>
+              </div>
+        </fieldset>
+        {% endif %}
+            <br>
+            <img src="/static/uploadimages/{{ article.image }}" height="150" alt="Card image cap">
+            <h6>Вы можете изменить картинку, добавив новый файл</h6>
+            <input name ="file" type= "file" id ="file">
+            <br>
+            <br>
+<div class="row justify-content-md-center">
+      <input type="submit" class="btn btn-danger" value="Обновить статью">
+</div>
+    </form>
+</div>
+{% endblock %}
