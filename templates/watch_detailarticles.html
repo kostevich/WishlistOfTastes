@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ article.title }}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <center><h1 class="display-3">{{ article.title }}</h1></center>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="/static/uploadimages/{{ article.image }}" alt="Card image cap">
+        <div class="card-body">
+            <strong class="d-inline-block mb-2 text-primary-emphasis">{{ article.tag }}</strong>
+            <h3 class="mb-0">{{ article.title }}</h3>
+            <br>
+            <div class="progress">
+                Оценка:
+                <div class="progress-bar" role="progressbar" style="width: {{ article.value }}0%" aria-valuenow="{{ article.value }}" aria-valuemin="0" aria-valuemax="10"></div>
+              </div>
+              <br>
+          <p class="card-text">
+            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                <strong class="mr-auto">{{ article.check }}</strong>
+                <br>
+                </div>
+                <div class="col-sm">{{ article.comment }}</div>
+                </div>
+            </div>
+          </p>
+          <div class="card-footer">
+            <div class="row">
+                <div class="col-sm">Дата последнего изменения: {{ article.updated_on.date() }}</div>
+            </div>
+            <div class="nav-link disabled text-primary"></div>
+            <a href="{{ article.id }}/delete" class="btn btn-danger">Удаление статьи</a>
+            <a href="{{ article.id }}/edit" class="btn btn-warning">Редактирование статьи</a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+</div>
+{% endblock %}
