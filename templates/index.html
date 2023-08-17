@@ -1,26 +1,23 @@
 {% extends 'base.html' %}
-
 {% block title %}
-Создание статьи
+Добавление хотелки
 {% endblock %}
-
-
 {% block body %}
 <div class="container">
-<h1>Добавление статьи</h1>
+<h1>Добавление хотелки</h1>
     <form method="post" enctype="multipart/form-data">
-        <input name="title" id="title" class="form-control" placeholder="Введите название блюда/продукта"><br>
+        <input name="title" id="title" class="form-control" placeholder="Введите название хотелки"><br>
         <input name="tag" id="tag" class="form-control" placeholder="Введите тег"><br>
-        <textarea name="value" id="value" class="form-control" placeholder="Введите оценку блюда"></textarea><br>
+        <textarea name="value" id="value" class="form-control" placeholder="Введите оценку хотелки"></textarea><br>
         <textarea name="comment" id="comment" class="form-control" placeholder="Введите комментарий к оценке"></textarea><br>
             <fieldset>
               <legend>Пробовали ли вы это ранее?</legend>
               <div>
-                <input type="radio" id="Да" name="check" value="Да" />
+                <input type="radio" id="Да" name="check" value="Я пробовал(а)" />
                 <label for="Да">Да</label>
               </div>
               <div>
-                <input type="radio" id="Нет" name="check" value="Нет" />
+                <input type="radio" id="Нет" name="check" value="Не пробовал(а)" />
                 <label for="Нет">Нет</label>
               </div>
             </fieldset>
@@ -33,4 +30,10 @@
 </div>
     </form>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}
