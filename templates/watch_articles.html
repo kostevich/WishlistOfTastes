@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
-
 {% block title %}
-Мои статьи
+Что покушать?
 {% endblock %}
-
 {% block body %}
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
@@ -17,7 +15,7 @@
       <img src="/static/uploadimages/{{ el.image }}" height="150" alt="Card image cap">
       <p class="card-text">
     </p>
-      <a href="watch_articles/{{ el.id }}" class="btn btn-primary">Детальнее</a>
+      <a href="watch_articles/{{ el.id }}" class="btn btn-outline-primary">Детальнее</a>
   </div>
         </div>
     {% endfor %}
