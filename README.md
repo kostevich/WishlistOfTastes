@@ -13,7 +13,7 @@ flask-sqlalchemy==3.0.5_** или  использовать файл **_requirem
 
   **`pip install flask==2.3.2`**
 
-  **`pip install PyJWT==flask-sqlalchemy==3.0.5`**
+  **`pip install flask-sqlalchemy==3.0.5`**
   
   или 
   
