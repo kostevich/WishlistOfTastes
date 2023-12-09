@@ -1,10 +1,5 @@
+# Program files
+__pycache__
 
-static/uploadimages/109979502.jpg
-instance/food.db
-.idea/vcs.xml
-.idea/modules.xml
-.idea/misc.xml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/inspectionProfiles/profiles_settings.xml
-.vscode/settings.json
-.idea/Flask_2.iml
+# Confidential files
+instance/Food.db
