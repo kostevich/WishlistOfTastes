@@ -6,10 +6,7 @@
 
 from datetime import datetime
 from dublib.Methods import CheckPythonMinimalVersion
-from flask import Flask
-from flask import redirect
-from flask import render_template
-from flask import request
+from flask import Flask, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 
